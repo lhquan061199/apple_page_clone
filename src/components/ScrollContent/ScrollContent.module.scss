@@ -1,0 +1,89 @@
+.wrapper {
+  margin: 0 auto;
+  max-width: 1320px;
+  margin-bottom: 70px;
+}
+
+.header {
+  display: flex;
+  padding: 52px 0px 22px 0px;
+  justify-content: space-between;
+}
+
+.sub-text {
+  font-size: 17px;
+  color: #bf4800;
+}
+
+.header-title {
+  font-size: 48px;
+  padding-bottom: 8px;
+}
+
+.header-receipt {
+  font-size: 16px;
+}
+
+.hearder-pay {
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.icon {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.select-content {
+  display: flex;
+  position: relative;
+}
+.left-select-content {
+  background-color: white;
+  width: 70%;
+  height: 564px;
+  position: sticky;
+  top: 130px;
+  padding: 40px 10px;
+  margin-right: 60px;
+}
+
+.right-select-content {
+  margin-top: 24px;
+}
+
+.detail-content h2 {
+  font-size: 40px;
+  margin-bottom: 17px;
+}
+
+.detail-content h3 {
+  font-size: 21px;
+  margin: 34px 0 8px 0;
+}
+
+.detail-content p {
+  margin-bottom: 6px;
+}
+
+.detail-content li {
+  margin-left: 20px;
+  list-style: decimal;
+}
+
+.explain,
+.strong-text {
+  font-weight: 800;
+}
+
+.top-10 {
+  top: 10rem;
+}
+
+.trade-in {
+  display: flex;
+}
+
+.left-tradein {
+  flex: 70%;
+}

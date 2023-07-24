@@ -1,0 +1,100 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 40px;
+  margin: 77px 0 66px 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1024px;
+  margin: 0 auto;
+  gap: 20px;
+  height: 2000px;
+}
+
+.colors {
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+}
+.img-device {
+  //   width: 183px;
+  height: 254px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.title {
+  font-size: 17px;
+  margin: 6px 0;
+}
+
+.price {
+  font-size: 14px;
+  margin: 35px 0 8px 0;
+}
+
+.line {
+  background-color: gray;
+  height: 1px;
+  width: 80%;
+  margin-top: 50px;
+}
+
+.size {
+  font-size: 17px;
+  text-align: center;
+}
+
+.feature {
+  max-height: 228px;
+  min-height: 151px;
+}
+
+.none {
+  height: 56px;
+  background-color: transparent;
+}
+
+.type-intro {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+  font-size: 14px;
+  // text-align: center;
+  margin-bottom: 32px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.intro {
+  width: 190px;
+}
+
+.feature:last-child {
+  border-bottom: 1px solid #ccc;
+}

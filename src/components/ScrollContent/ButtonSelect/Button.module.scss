@@ -1,0 +1,30 @@
+.wrapper {
+  outline: 1px #86868b solid;
+  border-radius: 12px;
+  height: 100px;
+  padding: 14px;
+  display: flex;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.wrapper.active {
+  outline: 2px solid #0071e3;
+  outline-offset: 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  flex: 70%;
+  align-items: center;
+}
+
+.type {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.right {
+  flex: 1;
+}

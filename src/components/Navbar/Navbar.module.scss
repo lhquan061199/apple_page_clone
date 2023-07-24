@@ -1,0 +1,42 @@
+.navigation {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.menu-item a {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.menu-item {
+}
+
+.drop-down {
+  width: 100%;
+  // height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+  display: none;
+  z-index: 100;
+  justify-content: center;
+}
+
+.menu-item:hover .drop-down {
+  display: flex;
+}
+
+.blur {
+  background-color: aqua;
+  width: 100%;
+  height: 300px;
+}

@@ -1,0 +1,36 @@
+.container {
+  width: 42px;
+  height: 42px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px white solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container.active {
+  border-color: blue;
+}
+
+.inner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.inner.purple {
+  background-color: #6d6475;
+}
+
+.inner.gold {
+  background-color: #f4e8ce;
+}
+
+.inner.silver {
+  background-color: #f2f4f3;
+}
+
+.inner.black {
+  background-color: #585755;
+}
