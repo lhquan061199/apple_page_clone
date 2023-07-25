@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import classNames from "classnames/bind";
 import styles from "./Compare.module.scss";
 const cx = classNames.bind(styles);
@@ -27,6 +29,7 @@ const dataDevices = [
     name: "iPhone 14 Pro",
     title: "Một iPhone cực đỉnh.",
     price: "Từ 27.999.000đ",
+    path: "/iphone-14pro",
     colors: color14p,
     new: true,
     screen: {
@@ -83,6 +86,7 @@ const dataDevices = [
     name: "iPhone 14",
     title: "Siêu mạnh mẽ trên mọi mặt.",
     price: "Từ 22.499.000đ",
+    path: "/iphone-14",
     colors: color14,
     new: true,
     screen: {
@@ -134,6 +138,7 @@ const dataDevices = [
     name: "iPhone 13",
     title: "Luôn tuyệt vời như thế.",
     price: "Từ 16.849.000đ",
+    path: "/iphone-13",
     colors: color13,
     new: true,
     screen: {
@@ -184,6 +189,7 @@ const dataDevices = [
     name: "iPhone SE",
     title: "Thực sự mạnh mẽ, Thực sự giá trị",
     price: "Từ 11.999.000đ",
+    path: "/iphone-SE",
     colors: color13,
     new: true,
     screen: {
@@ -240,15 +246,19 @@ function Compare() {
       <div className={cx("wrapper")}>
         {dataDevices.map((device, index) => (
           <div key={index} className={cx("type")}>
-            <div className={cx("img-device")}>
-              <img src={device.imgDevice} alt="" />
-            </div>
-            <div className={cx("colors")}>
-              <img src={device.colors} alt="" />
-            </div>
-            <div className={cx("name")}>{device.name}</div>
-            <div className={cx("title")}>{device.title}</div>
-            <div className={cx("price")}>{device.price}</div>
+            <Link to={device.path}>
+              <div className="text-center">
+                <div className={cx("img-device")}>
+                  <img src={device.imgDevice} alt="" />
+                </div>
+                <div className={cx("colors")}>
+                  <img src={device.colors} alt="" />
+                </div>
+                <div className={cx("name")}>{device.name}</div>
+                <div className={cx("title")}>{device.title}</div>
+                <div className={cx("price")}>{device.price}</div>
+              </div>
+            </Link>
             <div className={cx("line")}></div>
             <div className={cx("screen", "feature")}>
               <div className={cx("size")}>{device.screen.size}</div>
