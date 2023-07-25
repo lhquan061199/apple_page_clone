@@ -1,17 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Page14Pro from "./Page/Page14Pro";
+import Page14 from "./Page/Page14";
+import Page13 from "./Page/Page13";
+import PageSe from "./Page/PageSe";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-// import 'bootstrap/dist/css/bootstrap.js';
+
 import GlobalStyles from "./components/GlobalStyles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStyles>
-      <App />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App></App>} />
+          <Route path="/iphone-14pro" element={<Page14Pro></Page14Pro>} />
+          <Route path="/iphone-14" element={<Page14></Page14>} />
+          <Route path="/iphone-13" element={<Page13></Page13>} />
+          <Route path="/iphone-SE" element={<PageSe></PageSe>} />
+        </Routes>
+      </BrowserRouter>
     </GlobalStyles>
   </React.StrictMode>
 );
