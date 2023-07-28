@@ -12,21 +12,25 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 
 import GlobalStyles from "./components/GlobalStyles";
+import { Provider } from "react-redux";
+import store from "./store/index.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GlobalStyles>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App></App>} />
-          <Route path="/iphone-14pro" element={<Page14Pro></Page14Pro>} />
-          <Route path="/iphone-14" element={<Page14></Page14>} />
-          <Route path="/iphone-13" element={<Page13></Page13>} />
-          <Route path="/iphone-SE" element={<PageSe></PageSe>} />
-        </Routes>
-      </BrowserRouter>
-    </GlobalStyles>
+    <Provider store={store}>
+      <GlobalStyles>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App></App>} />
+            <Route path="/iphone-14pro" element={<Page14Pro></Page14Pro>} />
+            <Route path="/iphone-14" element={<Page14></Page14>} />
+            <Route path="/iphone-13" element={<Page13></Page13>} />
+            <Route path="/iphone-SE" element={<PageSe></PageSe>} />
+          </Routes>
+        </BrowserRouter>
+      </GlobalStyles>
+    </Provider>
   </React.StrictMode>
 );
 

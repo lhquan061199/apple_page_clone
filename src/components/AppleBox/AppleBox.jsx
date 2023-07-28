@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./AppleBox.module.scss";
 const cx = classNames.bind(styles);
 
-function AppleBox({ device, devices }) {
+function AppleBox({ device }) {
   return (
     <div>
       <div className={cx("wrapper")}>

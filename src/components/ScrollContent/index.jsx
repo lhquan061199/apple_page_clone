@@ -1,24 +1,52 @@
 import "swiper/css";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useSelector, useDispatch } from "react-redux";
 
 import Modal1 from "../Modal/Modal1";
 import SwiperCom from "./swiper";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import CircleSelect from "./circleSelect/CircleSelect";
+import { setSelectedDevice } from "../../store/reducers/device";
+import { initData } from "../../assets/data/index";
 
 import classNames from "classnames/bind";
 import styles from "./ScrollContent.module.scss";
 const cx = classNames.bind(styles);
 
-function ScrollContent({
-  devices,
-  device,
-  handleClick,
-  handleColorSelected,
-  handleStorageSelected,
-  finalCost,
-}) {
+function ScrollContent({ devices, finalCost }) {
+  const device = useSelector((state) => state.device.value);
+  const dispath = useDispatch();
+
+  function handleClick(item) {
+    dispath(setSelectedDevice(initData(item)));
+  }
+
+  function handleColorSelected(newColor, addedColor) {
+    dispath(
+      setSelectedDevice({
+        ...device,
+        option: {
+          ...device.option,
+          selected_color: newColor,
+          added_colorFee: addedColor,
+        },
+      })
+    );
+  }
+
+  function handleStorageSelected(newStorage) {
+    dispath(
+      setSelectedDevice({
+        ...device,
+        option: {
+          ...device.option,
+          selected_storage: newStorage,
+        },
+      })
+    );
+  }
+
   return (
     <>
       <div className={cx("wrapper")}>
@@ -48,7 +76,6 @@ function ScrollContent({
               imgPreview={device.option.selected_color.previewImg}
             ></SwiperCom>
           </div>
-          {/* <div className="col-3 h-100 mt-5"> */}
           <div className={cx("right-select-content")}>
             <div className="fs-4 mb-3">
               <span className="fw-bold">Phiên bản.</span>Mẫu nào phù hợp nhất
@@ -60,9 +87,7 @@ function ScrollContent({
                 type={deviceItem.name}
                 price={deviceItem.originalCost}
                 active={deviceItem.model === device.model}
-                onClick={() => {
-                  handleClick(deviceItem);
-                }}
+                onClick={() => handleClick(deviceItem)}
               ></ButtonSelect>
             ))}
             <div className="p-3 fs-6">
@@ -106,9 +131,7 @@ function ScrollContent({
                 active={
                   device.option.selected_storage.capacity === storage.capacity
                 }
-                onClick={() => {
-                  handleStorageSelected(storage);
-                }}
+                onClick={() => handleStorageSelected(storage)}
               ></ButtonSelect>
             ))}
 
