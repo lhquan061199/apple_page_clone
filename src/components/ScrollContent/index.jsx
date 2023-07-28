@@ -7,7 +7,7 @@ import Modal1 from "../Modal/Modal1";
 import SwiperCom from "./swiper";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import CircleSelect from "./circleSelect/CircleSelect";
-import { addStateCurrentIsSelected } from "../../store/reducers/device";
+import { setSelectedDevice } from "../../store/reducers/device";
 import { initData } from "../../assets/data/index";
 
 import classNames from "classnames/bind";
@@ -15,16 +15,16 @@ import styles from "./ScrollContent.module.scss";
 const cx = classNames.bind(styles);
 
 function ScrollContent({ devices, finalCost }) {
-  const device = useSelector((state) => state.select.value);
+  const device = useSelector((state) => state.device.value);
   const dispath = useDispatch();
 
   function handleClick(item) {
-    dispath(addStateCurrentIsSelected(initData(item)));
+    dispath(setSelectedDevice(initData(item)));
   }
 
   function handleColorSelected(newColor, addedColor) {
     dispath(
-      addStateCurrentIsSelected({
+      setSelectedDevice({
         ...device,
         option: {
           ...device.option,
@@ -37,7 +37,7 @@ function ScrollContent({ devices, finalCost }) {
 
   function handleStorageSelected(newStorage) {
     dispath(
-      addStateCurrentIsSelected({
+      setSelectedDevice({
         ...device,
         option: {
           ...device.option,

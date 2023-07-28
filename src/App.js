@@ -13,7 +13,7 @@ import AppleCare from "./components/AppleCare/AppleCare";
 import { devices } from "./assets/data";
 
 function App() {
-  const device = useSelector((state) => state.select.value);
+  const device = useSelector((state) => state.device.value);
 
   const [showAppleCare, setShowAppleCare] = useState(false);
 

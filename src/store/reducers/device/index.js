@@ -8,15 +8,11 @@ export const selectSlice = createSlice({
   name: "counter",
   initialState: { value: initial },
   reducers: {
-    handlClickDevice: (state, action) => {
-      state.value = initData(action.payload);
-    },
-
-    addStateCurrentIsSelected: (state, action) => {
+    setSelectedDevice: (state, action) => {
       state.value = action.payload;
     },
   },
 });
 
-export const { addStateCurrentIsSelected } = selectSlice.actions;
+export const { setSelectedDevice } = selectSlice.actions;
 export default selectSlice.reducer;

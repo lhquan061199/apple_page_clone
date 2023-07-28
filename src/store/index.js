@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import selectReducer from "./reducers/device";
+import deviceReducer from "./reducers/device";
 
 export default configureStore({
   reducer: {
-    select: selectReducer,
+    device: deviceReducer,
   },
 });
