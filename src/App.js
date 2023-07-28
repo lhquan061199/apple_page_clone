@@ -192,7 +192,6 @@ function App() {
 
   const device = useSelector((state) => state.select.value);
 
-  console.log("🚀 ~ file: App.js:196 ~ App ~ device:", device);
   const [showAppleCare, setShowAppleCare] = useState(false);
 
   function calculatingCost(original, colorCost, storageCost) {

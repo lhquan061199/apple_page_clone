@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import GlobalStyles from "./components/GlobalStyles";
 import { Provider } from "react-redux";
-import store from "./app/store";
+import store from "./store/index.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

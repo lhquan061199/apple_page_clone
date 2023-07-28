@@ -11,16 +11,15 @@ import {
   handlClickDevice,
   selectColor,
   selecStorage,
-} from "../../features/select/selectSlice";
+} from "../../store/reducers/device/selectSlice";
 
 import classNames from "classnames/bind";
 import styles from "./ScrollContent.module.scss";
 const cx = classNames.bind(styles);
 
 function ScrollContent({ devices, finalCost }) {
-  const count = useSelector((state) => state.select.value);
+  const device = useSelector((state) => state.select.value);
 
-  console.log("🚀 ~ file: index.jsx:26 ~ countscr:", count);
   const dispath = useDispatch();
 
   return (
@@ -49,10 +48,9 @@ function ScrollContent({ devices, finalCost }) {
         <div className={cx("select-content")}>
           <div className={cx("left-select-content")}>
             <SwiperCom
-              imgPreview={count.option.selected_color.previewImg}
+              imgPreview={device.option.selected_color.previewImg}
             ></SwiperCom>
           </div>
-          {/* <div className="col-3 h-100 mt-5"> */}
           <div className={cx("right-select-content")}>
             <div className="fs-4 mb-3">
               <span className="fw-bold">Phiên bản.</span>Mẫu nào phù hợp nhất
@@ -63,7 +61,7 @@ function ScrollContent({ devices, finalCost }) {
                 key={deviceItem.model}
                 type={deviceItem.name}
                 price={deviceItem.originalCost}
-                active={deviceItem.model === count.model}
+                active={deviceItem.model === device.model}
                 onClick={() => dispath(handlClickDevice(deviceItem))}
               ></ButtonSelect>
             ))}
@@ -76,16 +74,16 @@ function ScrollContent({ devices, finalCost }) {
               <span className="fw-bold">Màu.</span>Chọn màu bạn yêu thích
             </div>
             <div>
-              <p>Màu - {count.option.selected_color.subType} </p>
+              <p>Màu - {device.option.selected_color.subType} </p>
               <div className="d-flex justify-content-between">
-                {count.option.color.map((color, index) => (
+                {device.option.color.map((color, index) => (
                   <CircleSelect
                     key={index}
                     type={color.type}
                     additionalFee={color.additionalFee}
                     previewImg={color.previewImg}
                     media={color.media}
-                    active={count.option.selected_color.type === color.type}
+                    active={device.option.selected_color.type === color.type}
                     onClick={() => dispath(selectColor(color))}
                   ></CircleSelect>
                 ))}
@@ -96,15 +94,15 @@ function ScrollContent({ devices, finalCost }) {
               nhiêu dung lượng
             </div>
 
-            {count.option.storage.map((storage, index) => (
+            {device.option.storage.map((storage, index) => (
               <ButtonSelect
-                price={count.originalCost}
+                price={device.originalCost}
                 key={index}
                 type={storage.capacity}
                 additionalFee={storage.additionalFee}
-                addedColorFee={count.option.added_colorFee}
+                addedColorFee={device.option.added_colorFee}
                 active={
-                  count.option.selected_storage.capacity === storage.capacity
+                  device.option.selected_storage.capacity === storage.capacity
                 }
                 onClick={() => dispath(selecStorage(storage))}
               ></ButtonSelect>

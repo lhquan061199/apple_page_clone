@@ -5,27 +5,27 @@ import {
   goldPreviews,
   silverPreviews,
   blackPreviews,
-} from "../../components/ScrollContent/importAssets";
+} from "../../../components/ScrollContent/importAssets";
 import {
   purplePos1Img,
   purplePos2Img,
   purplePos3Img,
-} from "../../components/ScrollContent/importAssets";
+} from "../../../components/ScrollContent/importAssets";
 import {
   goldPos1Img,
   goldPos2Img,
   goldPos3Img,
-} from "../../components/ScrollContent/importAssets";
+} from "../../../components/ScrollContent/importAssets";
 import {
   silverPos1Img,
   silverPos2Img,
   silverPos3Img,
-} from "../../components/ScrollContent/importAssets";
+} from "../../../components/ScrollContent/importAssets";
 import {
   blackPos1Img,
   blackPos2Img,
   blackPos3Img,
-} from "../../components/ScrollContent/importAssets";
+} from "../../../components/ScrollContent/importAssets";
 
 const devices = [
   {
