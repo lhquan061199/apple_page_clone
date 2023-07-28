@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -189,9 +190,10 @@ function App() {
     },
   ];
 
-  const [showAppleCare, setShowAppleCare] = useState(false);
+  const device = useSelector((state) => state.select.value);
 
-  const [device, setDevice] = useState(initData(devices[0]));
+  console.log("🚀 ~ file: App.js:196 ~ App ~ device:", device);
+  const [showAppleCare, setShowAppleCare] = useState(false);
 
   function calculatingCost(original, colorCost, storageCost) {
     let isFeeColor = 0;
@@ -214,58 +216,11 @@ function App() {
     setShowAppleCare(true);
   };
 
-  function initData(device) {
-    let result = JSON.parse(JSON.stringify(device));
-
-    for (let key in result.option) {
-      result.option[`selected_${key}`] = result.option[key][0];
-    }
-    return result;
-  }
-
-  function handleClick(item) {
-    setDevice(initData(item));
-  }
-
-  function handleColorSelected(newColor, addedColor) {
-    setDevice((device) => {
-      return {
-        ...device,
-        option: {
-          ...device.option,
-          selected_color: newColor,
-          added_colorFee: addedColor,
-        },
-      };
-    });
-  }
-
-  function handleStorageSelected(newStorage) {
-    setDevice((device) => {
-      return {
-        ...device,
-        option: {
-          ...device.option,
-          selected_storage: newStorage,
-        },
-      };
-    });
-  }
-
   return (
     <div>
       <Header finalCost={finalCost}></Header>
       <Ribbon></Ribbon>
-      <ScrollContent
-        initData={initData}
-        devices={devices}
-        device={device}
-        finalCost={finalCost}
-        setDevice={setDevice}
-        handleClick={handleClick}
-        handleColorSelected={handleColorSelected}
-        handleStorageSelected={handleStorageSelected}
-      ></ScrollContent>
+      <ScrollContent devices={devices} finalCost={finalCost}></ScrollContent>
       <AppleTrade
         onClick={handleShowAppleCare}
         showAppleCare={showAppleCare}

@@ -1,24 +1,28 @@
 import "swiper/css";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useSelector, useDispatch } from "react-redux";
 
 import Modal1 from "../Modal/Modal1";
 import SwiperCom from "./swiper";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import CircleSelect from "./circleSelect/CircleSelect";
+import {
+  handlClickDevice,
+  selectColor,
+  selecStorage,
+} from "../../features/select/selectSlice";
 
 import classNames from "classnames/bind";
 import styles from "./ScrollContent.module.scss";
 const cx = classNames.bind(styles);
 
-function ScrollContent({
-  devices,
-  device,
-  handleClick,
-  handleColorSelected,
-  handleStorageSelected,
-  finalCost,
-}) {
+function ScrollContent({ devices, finalCost }) {
+  const count = useSelector((state) => state.select.value);
+
+  console.log("🚀 ~ file: index.jsx:26 ~ countscr:", count);
+  const dispath = useDispatch();
+
   return (
     <>
       <div className={cx("wrapper")}>
@@ -45,7 +49,7 @@ function ScrollContent({
         <div className={cx("select-content")}>
           <div className={cx("left-select-content")}>
             <SwiperCom
-              imgPreview={device.option.selected_color.previewImg}
+              imgPreview={count.option.selected_color.previewImg}
             ></SwiperCom>
           </div>
           {/* <div className="col-3 h-100 mt-5"> */}
@@ -59,10 +63,8 @@ function ScrollContent({
                 key={deviceItem.model}
                 type={deviceItem.name}
                 price={deviceItem.originalCost}
-                active={deviceItem.model === device.model}
-                onClick={() => {
-                  handleClick(deviceItem);
-                }}
+                active={deviceItem.model === count.model}
+                onClick={() => dispath(handlClickDevice(deviceItem))}
               ></ButtonSelect>
             ))}
             <div className="p-3 fs-6">
@@ -74,19 +76,17 @@ function ScrollContent({
               <span className="fw-bold">Màu.</span>Chọn màu bạn yêu thích
             </div>
             <div>
-              <p>Màu - {device.option.selected_color.subType} </p>
+              <p>Màu - {count.option.selected_color.subType} </p>
               <div className="d-flex justify-content-between">
-                {device.option.color.map((color, index) => (
+                {count.option.color.map((color, index) => (
                   <CircleSelect
                     key={index}
                     type={color.type}
                     additionalFee={color.additionalFee}
                     previewImg={color.previewImg}
                     media={color.media}
-                    active={device.option.selected_color.type === color.type}
-                    onClick={() =>
-                      handleColorSelected(color, color.additionalFee)
-                    }
+                    active={count.option.selected_color.type === color.type}
+                    onClick={() => dispath(selectColor(color))}
                   ></CircleSelect>
                 ))}
               </div>
@@ -96,19 +96,17 @@ function ScrollContent({
               nhiêu dung lượng
             </div>
 
-            {device.option.storage.map((storage, index) => (
+            {count.option.storage.map((storage, index) => (
               <ButtonSelect
-                price={device.originalCost}
+                price={count.originalCost}
                 key={index}
                 type={storage.capacity}
                 additionalFee={storage.additionalFee}
-                addedColorFee={device.option.added_colorFee}
+                addedColorFee={count.option.added_colorFee}
                 active={
-                  device.option.selected_storage.capacity === storage.capacity
+                  count.option.selected_storage.capacity === storage.capacity
                 }
-                onClick={() => {
-                  handleStorageSelected(storage);
-                }}
+                onClick={() => dispath(selecStorage(storage))}
               ></ButtonSelect>
             ))}
 

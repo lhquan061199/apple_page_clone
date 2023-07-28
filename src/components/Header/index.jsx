@@ -10,7 +10,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const cx = classNames.bind(styles);
-// TODO: Chi truyn finalCost, finalCost dc tinh toan phia tren componentCha
+
 function Header({ finalCost }) {
   return (
     <>
