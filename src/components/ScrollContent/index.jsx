@@ -7,11 +7,8 @@ import Modal1 from "../Modal/Modal1";
 import SwiperCom from "./swiper";
 import ButtonSelect from "./ButtonSelect/ButtonSelect";
 import CircleSelect from "./circleSelect/CircleSelect";
-import {
-  handlClickDevice,
-  selectColor,
-  selecStorage,
-} from "../../store/reducers/device/selectSlice";
+import { addStateCurrentIsSelected } from "../../store/reducers/device";
+import { initData } from "../../assets/data/index";
 
 import classNames from "classnames/bind";
 import styles from "./ScrollContent.module.scss";
@@ -19,8 +16,36 @@ const cx = classNames.bind(styles);
 
 function ScrollContent({ devices, finalCost }) {
   const device = useSelector((state) => state.select.value);
-
   const dispath = useDispatch();
+
+  function handleClick(item) {
+    dispath(addStateCurrentIsSelected(initData(item)));
+  }
+
+  function handleColorSelected(newColor, addedColor) {
+    dispath(
+      addStateCurrentIsSelected({
+        ...device,
+        option: {
+          ...device.option,
+          selected_color: newColor,
+          added_colorFee: addedColor,
+        },
+      })
+    );
+  }
+
+  function handleStorageSelected(newStorage) {
+    dispath(
+      addStateCurrentIsSelected({
+        ...device,
+        option: {
+          ...device.option,
+          selected_storage: newStorage,
+        },
+      })
+    );
+  }
 
   return (
     <>
@@ -62,7 +87,7 @@ function ScrollContent({ devices, finalCost }) {
                 type={deviceItem.name}
                 price={deviceItem.originalCost}
                 active={deviceItem.model === device.model}
-                onClick={() => dispath(handlClickDevice(deviceItem))}
+                onClick={() => handleClick(deviceItem)}
               ></ButtonSelect>
             ))}
             <div className="p-3 fs-6">
@@ -84,7 +109,9 @@ function ScrollContent({ devices, finalCost }) {
                     previewImg={color.previewImg}
                     media={color.media}
                     active={device.option.selected_color.type === color.type}
-                    onClick={() => dispath(selectColor(color))}
+                    onClick={() =>
+                      handleColorSelected(color, color.additionalFee)
+                    }
                   ></CircleSelect>
                 ))}
               </div>
@@ -104,7 +131,7 @@ function ScrollContent({ devices, finalCost }) {
                 active={
                   device.option.selected_storage.capacity === storage.capacity
                 }
-                onClick={() => dispath(selecStorage(storage))}
+                onClick={() => handleStorageSelected(storage)}
               ></ButtonSelect>
             ))}
 
